@@ -30,7 +30,7 @@ angular.module('mpfeApp')
      var config = {
          headers: {
              'X-HTTP-Method-Override': 'GET',
-             'Access-Control-Allow-Origin': 'http://localhost:9000'
+             'Access-Control-Allow-Origin': true
          }
      };
 

@@ -54,4 +54,5 @@ angular
 
       AuthProvider.registerPath(SERVER.url + '/users/sign_up.json');
       AuthProvider.registerMethod('GET');
+      AuthProvider.resourceName('user');
   });
