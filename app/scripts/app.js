@@ -18,7 +18,15 @@ angular
     'ngTouch', 
     'Devise'
   ])
-  .config(function ($routeProvider) {
+
+  // local until i can figure out the heroku settings
+  .constant('SERVER', {
+    url: 'http://api.marketplaceapi.dev'
+  })
+
+
+  .config(function ($routeProvider, AuthProvider, SERVER) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -43,12 +51,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
 
-  .constant('SERVER', {
-    // Local server
-    //url: 'http://localhost:3000'
-
-    // Public Heroku server
-    url: 'https://api.damp-atoll-6985.herokuapp.com'
+      AuthProvider.registerPath(SERVER.url + '/users/sign_up.json');
+      AuthProvider.registerMethod('GET');
   });
