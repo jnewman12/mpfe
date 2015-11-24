@@ -15,9 +15,18 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch', 
+    'Devise'
   ])
-  .config(function ($routeProvider) {
+
+  // local until i can figure out the heroku settings
+  .constant('SERVER', {
+    url: 'http://api.marketplaceapi.dev'
+  })
+
+
+  .config(function ($routeProvider, AuthProvider, SERVER) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -27,11 +36,23 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/sign-up', {
-        templateUrl: 'views/signup.html',
+      .when('/register', {
+        templateUrl: 'views/auth/register.html',
         controller: 'AuthCtrl'
+      })
+      .when('/login', {
+        templateUrl: 'views/auth/login.html',
+        controller: 'AuthCtrl'
+      })
+      .when('/products', {
+        templateUrl: 'views/products/index.html',
+        controller: 'ProductsCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+
+      AuthProvider.registerPath(SERVER.url + '/users/sign_up.json');
+      AuthProvider.registerMethod('GET');
+      AuthProvider.resourceName('user');
   });
