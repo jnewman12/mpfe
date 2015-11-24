@@ -6,44 +6,53 @@ angular.module('mpfeApp')
 	'$log',
 	'$location',
 	'Auth',
-	// register scope functions to signup or login
-	// function($scope, $location, $log, Auth) {
-	//   $scope.register = function() {
-	// 	Auth.register($scope.user).then(function(user) {
-	// 	  $log(user);	
-	// 	  $location.path('/products');
-	// 	 });
-	//   };
-	//   $scope.login = function() {
-	// 	Auth.login($scope.user).then(function(user) {
-	// 	  $log(user);	
-	// 	  $location.path('/products');
-	// 	});
-	//    };		
-	// }
-	function register($scope, $location, $log, Auth) {
-     var credentials = {
-         email: 'email@mail.com',
-         password: 'password1',
-         passwordConfirmation: 'password1'
-     };
-     var config = {
-         headers: {
-             'X-HTTP-Method-Override': 'GET',
-             'Access-Control-Allow-Origin': true
-         }
-     };
+    function($scope, $location, $log, Auth) {
+    	$scope.register = function() {
+         var credentials = {
+             email: $scope.email,
+             password: $scope.password,
+             passwordConfirmation: $scope.passwordConfirmation
+         };
+         var config = {
+             headers: {
+                 'X-HTTP-Method-Override': 'GET'
+             }
+         };
 
+         console.log($scope);
+         Auth.register(credentials, config).then(function(registeredUser) {
+             console.log(registeredUser); // => {id: 1, ect: '...'}
+         }, function(error) {
+             console.log('error:' + error);
+         });
 
-     Auth.register(credentials, config).then(function(registeredUser) {
-         console.log(registeredUser); // => {id: 1, ect: '...'}
-     }, function(error) {
-         console.log('error:' + error);
-     });
+         $scope.$on('devise:new-registration', function(event, user) {
+             console.log('from devise:new-registration event');
+             console.log(user);
+         });
+        };
 
-     $scope.$on('devise:new-registration', function(event, user) {
-         console.log('from devise:new-registration event');
-         console.log(user);
-     });
-    } 
+        // $scope.login = function( {
+
+        // }; 
+    }
 ]);
+
+
+// App.controller('AuthCtrl', [
+//     '$scope',
+//     '$state',
+//     'Auth',
+//     function($scope, $state, Auth) {
+//     // these functions to Auth. These return promises, which redirect the user to home state if auth/registration is successful 
+//     $scope.login = function() {
+//         Auth.login($scope.user).then(function(){
+//             $state.go('home');
+//         });
+//     };
+//     $scope.register = function() {
+//         Auth.register($scope.user).then(function(){
+//             $state.go('home');
+//         });
+//     };
+// }])
