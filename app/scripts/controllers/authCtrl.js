@@ -11,12 +11,13 @@ angular.module('mpfeApp')
          var credentials = {
              email: $scope.email,
              password: $scope.password,
-             passwordConfirmation: $scope.passwordConfirmation
+             passwordConfirmation: $scope.passwordConfirmation,
+             authToken: ''
          };
          var config = {
-             headers: {
-                 'X-HTTP-Method-Override': 'GET'
-             }
+            headers: {
+              'X-HTTP-Method-Override': 'GET'
+            }
          };
 
          console.log($scope);
