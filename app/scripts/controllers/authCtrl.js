@@ -11,8 +11,7 @@ angular.module('mpfeApp')
          var credentials = {
              email: $scope.email,
              password: $scope.password,
-             passwordConfirmation: $scope.passwordConfirmation,
-             authToken: ''
+             password_confirmation: $scope.password_confirmation
          };
          var config = {
             headers: {
@@ -20,7 +19,6 @@ angular.module('mpfeApp')
             }
          };
 
-         console.log($scope);
          Auth.register(credentials, config).then(function(registeredUser) {
              console.log(registeredUser); // => {id: 1, ect: '...'}
          }, function(error) {
