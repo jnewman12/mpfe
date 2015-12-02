@@ -29,11 +29,7 @@ angular.module('mpfeApp')
              console.log('from devise:new-registration event');
              console.log(user);
          });
-        };
-
-        // $scope.login = function( {
-
-        // }; 
+        }; 
     }
 ]);
 
