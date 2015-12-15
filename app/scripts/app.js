@@ -20,12 +20,12 @@ angular
   ])
 
   // local until i can figure out the heroku settings
-  .constant('SERVER', {
-    url: 'http://api.marketplaceapi.dev'
-  })
+  // .constant('SERVER', {
+  //   url: 'http://api.marketplaceapi.dev'
+  // })
 
 
-  .config(function ($routeProvider, AuthProvider, SERVER) {
+  .config(function ($routeProvider) {
 
     $routeProvider
       .when('/', {
@@ -56,7 +56,7 @@ angular
         redirectTo: '/'
       });
 
-      AuthProvider.registerPath(SERVER.url + '/users/sign_up.json');
-      AuthProvider.registerMethod('GET');
-      AuthProvider.resourceName('user');
+      // AuthProvider.registerPath(SERVER.url + '/users/sign_up.json');
+      // AuthProvider.registerMethod('GET');
+      // AuthProvider.resourceName('user');
   });
