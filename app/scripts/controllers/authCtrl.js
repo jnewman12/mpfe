@@ -1,37 +1,5 @@
 'use strict';
 
-// angular.module('mpfeApp')
-// .controller('AuthCtrl', [
-// 	'$scope',
-// 	'$log',
-// 	'$location',
-// 	'Auth',
-//     function($scope, $location, $log, Auth) {
-//     	$scope.signup = function() {
-//          var credentials = {
-//              email: $scope.email,
-//              password: $scope.password,
-//              password_confirmation: $scope.password_confirmation
-//          };
-//          var config = {
-//             headers: {
-//               'X-HTTP-Method-Override': 'GET'
-//             }
-//          };
-
-//          Auth.register(credentials, config).then(function(registeredUser) {
-//              console.log(registeredUser); // => {id: 1, ect: '...'}
-//          }, function(error) {
-//              console.log('error:' + error);
-//          });
-
-//          $scope.$on('devise:new-registration', function(event, user) {
-//              console.log('from devise:new-registration event');
-//              console.log(user);
-//          });
-//         }; 
-//     }
-// ]);
 
 angular.module('mpfeApp')
  .controller('AuthCtrl', ['tokenHandler', '$location', '$scope', '$http', 

@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name mpfeApp
- * @description
- * # mpfeApp
- *
- * Main module of the application.
- */
 angular
   .module('mpfeApp', [
     'ngAnimate',
@@ -55,8 +47,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-
-      // AuthProvider.registerPath(SERVER.url + '/users/sign_up.json');
-      // AuthProvider.registerMethod('GET');
-      // AuthProvider.resourceName('user');
   });
