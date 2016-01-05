@@ -3,7 +3,6 @@
 angular.module('mpfeApp')
   .service('tokenHandler', function($rootScope) {
   var token = null;
-//currentUser;
   var tokenHandler = {
   set: function(value) { token = value; },
   get: function() { 
